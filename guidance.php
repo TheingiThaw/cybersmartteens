@@ -11,7 +11,32 @@
     <link href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/mobileres.css">
 </head>
-<body>
+<body onload="updateComboBox()">
+    <?php
+      session_start();
+      include 'header.php';
+    ?>
+
+    <script>
+        $(document).ready(function(){
+            $(".profile-link").show(); 
+            $(".after-link").hide();  
+
+            var isUserSignedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+
+            if (isUserSignedIn) {
+                $(".profile-link").hide();
+                $(".after-link").show();
+            }
+            $(".profile-link").click(function(e){
+
+                $(".profile-link").hide();
+                $(".after-link").show();
+
+                window.location.href = $(this).attr("href");
+            });
+        });
+    </script>
 
     <main>
       <section class="guidance-header">
@@ -19,30 +44,29 @@
           <div class="row">
             <div class="col-sm-5 center auto">
               <div class="">
-                <p class="text-center">Social Media Campaigns</p>
-                <h2 class="text-center font-45 mobile-font6">Privacy & Data Policy</h2>
-                <p class="text-center mt-5">
+                <p class="text-center navy-blue">Social Media Campaigns</p>
+                <h2 class="text-center guidance-header-text mobile-font6">Privacy & Data Policy</h2>
+                <p class="text-center mt-5 navy-blue">
                   At <span class="guidance-websitename">CyberSmartTeens</span>, we take data privacy versy seriously. We want to be
                   completely transparent about the information that we store, how we use it and how we keep it secure.
                 </p>
               </div>
             </div>
             <div class="col-sm-7">
-              <img src="photos/119118-OPR1T5-114.jpg" class="guide-header-img" alt="">
+              <img src="../cybersmartteens/photos/119118-OPR1T5-114.jpg" class="guide-header-img" alt="">
             </div>
           </div>
-      </div>
+        </div>
       </section>
-
 
       <section class="guidance-info-section">
         <div class="row guidance-info center auto">
           <div class="col-sm-6 center">
-            <img src="photos/simplistic-online-registration-and-sign-up-on-computer.png" class="guidance-header-img" alt="">
+            <img src="../cybersmartteens/photos/simplistic-online-registration-and-sign-up-on-computer.png" class="guidance-header-img" alt="">
           </div>
           <div class="col-sm-6">
             <div>
-              <h4 class="mobile-font3">Privacy & Data Policy</h4>
+              <h4 class="mobile-font3 navy-blue">Privacy & Data Policy</h4>
               <p class="mt-4">
                 CyberSmartTeens does not share any personal data with any third party except information
                 required to function correctly. Users might visit our site anonymously, however for billing,
@@ -59,7 +83,7 @@
           <div class="row guidance-info auto">
             <div class="col-sm-6 center auto">
               <div>
-                <h4 class="mobile-font2">How we protect your data?</h4>
+                <h4 class="mobile-font2 navy-blue">How we protect your data?</h4>
                 <p class="mt-4">
                   We make great effort to ensure the security of your data using the latest encryption methods
                   and never storing information such as your passwords in plain text. We also use encrypted traffic and 
@@ -70,7 +94,7 @@
               </div>
             </div>
             <div class="col-sm-6 center">
-              <img src="photos/florid-data-security-and-financial-data-protection.png" class="guidance-header-img" alt="">
+              <img src="../cybersmartteens/photos/florid-data-security-and-financial-data-protection.png" class="guidance-header-img" alt="">
             </div>
           </div>
         </div>
@@ -142,7 +166,7 @@
       <section class="row guidance-info2">
         <div class="row col-md-6">
           <div class="col-4 mobile-center">
-            <img src="photos/techny-receiving-a-letter-or-email.gif" class="cookie-img" alt="">
+            <img src="../cybersmartteens/photos/techny-receiving-a-letter-or-email.gif" class="cookie-img" alt="">
           </div>
           <div class="col-8 center">
             <p>
@@ -154,7 +178,7 @@
         </div>
         <div class="row col-md-6">
           <div class="col-4 center">
-            <img src="photos/techny-project-management-teamwork-and-integration.gif" class="cookie-img" alt="">
+            <img src="../cybersmartteens/photos/techny-project-management-teamwork-and-integration.gif" class="cookie-img" alt="">
           </div>
           <div class="col-8 center">
             <p>
@@ -168,17 +192,16 @@
 
       <section class="guidance-div1">
         <div>
-          <h2 class="text-center font-3 mobile-font4">
+          <h2 class="text-center font-3 mobile-font4 navy-blue">
             Sharing Your Personal Data 
           </h2>
           <p class="text-center capitalize mt-5">
             Built For Performance, Optimized For Perfection
           </p>
-  
           <div class=" row w-75 auto mt-5">
             <div class="col-sm-4">
               <div class="row center">
-                <img src="photos/9_jCmCs6_400x400-removebg-preview.png" class="guidance-img" alt="">
+                <img src="../cybersmartteens/photos/9_jCmCs6_400x400-removebg-preview.png" class="guidance-img" alt="">
               </div>
               <div class="row">
                 <h5 class="text-center navy-blue mobile-font1">MaxMind</h5>
@@ -193,7 +216,7 @@
             </div>
             <div class="col-sm-4">
               <div class="row center">
-                <img src="photos/Conify-XL-removebg-preview.png" class="guidance-img" alt="">
+                <img src="../cybersmartteens/photos/Conify-XL-removebg-preview.png" class="guidance-img" alt="">
               </div>
               <div class="row">
                 <h5 class="text-center navy-blue mobile-font1">Coinify</h5>
@@ -207,7 +230,7 @@
             </div>
             <div class="col-sm-4">
               <div class="row center">
-                <img src="photos/Disqus_d_icon_(blue).svg.png" class="guidance-img" alt="">
+                <img src="../cybersmartteens/photos/Disqus_d_icon_(blue).svg.png" class="guidance-img" alt="">
               </div>
               <div class="row">
                 <h5 class="text-center navy-blue mobile-font1">Disqus</h5>
@@ -220,7 +243,6 @@
               </div>
             </div>
           </div>
-  
           <div class="auto mt-5">
             <p class="text-center">
               This privacy policy is subject to change without prior notice.<br>
@@ -235,42 +257,37 @@
       <section class="guidance-mailing">
         <div class="row">
           <div class="askAnything">
-            <h4>About CyberSmartTeens</h4>
-            <h2 class="mobile-font2 mb-textmt">Creating Safe Online Society For All Youngsters Globally</h2>
+            <h4>About <span class="mail-websitename">CyberSmartTeens</span></h4>
+            <h2 class="mobile-font2 mb-textmt red">Creating Safe Online Society For All Youngsters Globally</h2>
             <p class="mb-textmt">Ask anything especially about teenagers'cyber security here</p>
           </div>
         </div>
 
         <div class="guidance-mailimg">
-          <img src="photos/3d-casual-life-smiling-man-with-laptop-raising-his-index-finger.png" class="" alt="">
+          <img src="../cybersmartteens/photos/3d-casual-life-smiling-man-with-laptop-raising-his-index-finger.png" class="" alt="">
         </div>
 
         <!-- mail form from validation bootstrap is-valid or is-invalid -->
-        <form class="row g-3 guidance-Mail border-opacity-75 auto">
+        <form class="row g-3 mail guidance-Mail border-opacity-75 auto">
           <div class="col-md-6">
-            <label for="validationServer01" class="form-label">First name</label>
-            <input type="text" class="form-control" id="validationServer01" value="" required>
-            <div class="valid-feedback"></div>
+            <label for="validationServer01" class="form-label">Name</label>
+            <input type="text" class="form-control" id="contactName" value="" required>
           </div>
           <div class="col-md-6">
-            <label for="validationServer02" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="validationServer02" value="" required>
-            <div class="valid-feedback"></div>
+            <label for="validationServer02" class="form-label">Email</label>
+            <input type="text" class="form-control" id="contactEmail" value="" required>
+            <div class="contactmail-feedback"></div>
           </div>
           <div class="col-md-12">
             <label for="validationServer04" class="form-label">Subject</label>
-            <select class="form-select" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+            <select class="form-select" id="subject" aria-describedby="validationServer04Feedback" required>
               <option selected disabled value="">Choose...</option>
-              <option>...</option>
             </select>
             <div id="validationServer04Feedback" class="invalid-feedback"></div>
           </div>
           <div class="col-md-12">
             <label for="validationServer05" class="form-label">Leave a message</label>
-            <input type="text" class="form-control" id="validationServer05" aria-describedby="validationServer05Feedback" required>
-            <div id="validationServer05Feedback" class="invalid-feedback">
-              Please select a valid state.
-            </div>
+            <input type="text" class="form-control" id="message" aria-describedby="validationServer05Feedback" required>
           </div>
           <div class="col-12">
             <div class="form-check">
@@ -284,53 +301,94 @@
             </div>
           </div>
           <div class="col-12">
-            <button class="btn guidance-btn1" type="submit">Submit form</button>
+            <button class="btn mail-btn pink-anchor" id="emailSubmitBtn" type="submit">Submit form</button>
           </div>
+          <div class="col-12" id="mail-overallfeedback"></div>
         </form>
-      </section>
 
-      
+        <script>
+            function updateComboBox() {
+                var url = "getSubject.php";
+                var request;
+        
+                if (window.XMLHttpRequest) {
+                    request = new XMLHttpRequest();
+                } else {
+                    request = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+        
+                request.onreadystatechange = function () {
+                    if (request.readyState == 4 && request.status == 200) {
+                        var text = this.responseText;
+                        var parser = new DOMParser();
+                        var xmlDoc = parser.parseFromString(text, "text/xml");
+                        var elements = xmlDoc.getElementsByTagName("thing");
+                        var options = "";
+        
+                        for (var i = 0; i < elements.length; i++) {
+                            var subjectName = elements[i].getElementsByTagName("subjectName")[0].childNodes[0].nodeValue;
+                            options += "<option>" + subjectName + "</option>";
+                        }
+        
+                        document.getElementById("subject").innerHTML = options;
+                    }
+                };
+        
+                request.open("GET", url, true);
+                request.send();
+            }
+        </script>
+        
+        <script>
+            $(document).ready(function(){
+              document.getElementById("emailSubmitBtn").addEventListener("click", function (event){
+                var name = $('#contactName').val();
+                var email = $('#contactEmail').val();
+                var subject = $('#subject').val();
+                var message = $('#message').val();
+
+                if (name === '' || email === '' || subject === '') {
+                  $('#contactmail-feedback').html("Please make sure to fill in these places").css("color", "red");
+                  event.preventDefault();
+                }
+                else{
+                  $.ajax({
+                    url: 'emailInsert.php',
+                    method: 'POST',
+                    data : {
+                      name : name,
+                      email: email,
+                      subject: subject,
+                      message: message
+                    },
+                    success: function(response){
+                      console.log("ajax success");
+                      var data = JSON.parse(response);
+
+                      if(data.insert_success){
+                        $('#mail-overallfeedback').html("Thanks for contacting us").css("color", "green");
+                        console.log("insert success");
+                      }
+                      else{
+                        $('#mail-overallfeedback').html("Error Encountered").css("color", "red");
+                        alert("error encountered");
+                      }
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                      console.error("Error encountered in emailInsert.php:", textStatus, errorThrown);
+                      alert("Error encountered in emailInsert.php");
+                    }
+                  });
+                }
+              });
+            });
+        </script>
+      </section>
     </main>
 
-    <footer class="w-100">
-      <div class="text-center footer auto">
-        <hr>
-        <div class="row align-items-center py-4">
-          <div class="col">
-            CyberSmartTeens
-          </div>
-          <div class="col">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Features</li>
-              <li class="list-group-item">Pricing</li>
-              <li class="list-group-item">Resources</li>
-              <li class="list-group-item">Contact</li>
-              <li class="list-group-item">Privacy Policy</li>
-              <li class="list-group-item">Terms and Conditions</li>
-            </ul>
-          </div>
-          <div class="col">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, incidunt! Ullam fuga voluptates ab nobis nisi aliquid! Tempora dolore at ipsum delectus impedit asperiores incidunt magnam fuga placeat amet? Tempore.</p>
-          </div>
-          <div class="col">
-            <h5>Social</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><a href="https://www.facebook.com/">Facebook</a></li>
-              <li class="list-group-item"><a href="https://www.instagram.com/">Instagram</a></li>
-              <li class="list-group-item"><a href="https://www.twitter.com/">X</a></li>
-              <li class="list-group-item"><a href="https://www.tiktok.com/">TikTok</a></li>
-              <li class="list-group-item"><a href="https://www.youtube.com/">YouTube</a></li>
-            </ul>
-          </div>
-        </div>
-        <hr>
-        <div class="row justify-content-between px-5 py-2">
-          <p class="col-auto">
-            &#169;2024 by CyberSmartTeens. All copyrights reserved.
-          </p>
-          <p class="col-auto">We Value Your Safety</p>
-        </div>
-      </div>
-    </footer>
+    <?php
+      include 'footer.php';
+    ?>
 </body>
 </html>

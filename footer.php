@@ -10,28 +10,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/mobileres.css">
+    <link rel="stylesheet" href="css/mobileres.css">
 </head>
 <body>
     <footer>
         <div class="footer center">
-            <div >
-                <h2 class="footer-webname">
+            <div>
+                <h2 class="footer-webname mb-textcenter">
                     CyberSmartTeens
                 </h2>
-                <ul class="d-flex">
+                <ul class="">
                     <li class="list-group-item"><a href="https://www.facebook.com/" class="footer-sm-a"><i class="bi bi-facebook"></i></a></li>
                     <li class="list-group-item"><a href="https://www.instagram.com/" class="footer-sm-a"><i class="bi bi-instagram"></i></a></li>
                     <li class="list-group-item"><a href="https://www.twitter.com/" class="footer-sm-a"><i class="bi bi-twitter-x"></i></a></li>
                     <li class="list-group-item"><a href="https://www.tiktok.com/" class="footer-sm-a"><i class="bi bi-tiktok"></i></a></li>
                     <li class="list-group-item"><a href="https://www.youtube.com/" class="footer-sm-a"><i class="bi bi-youtube"></i></a></li>
                 </ul>
-                <ul class="d-flex">
-                    <li class="list-group-item"><a href="#" class="footer-nav-a">Features</a></li>
-                    <li class="list-group-item"><a href="#" class="footer-nav-a">Pricing</a></li>
-                    <li class="list-group-item"><a href="#" class="footer-nav-a">Resources</a></li>
-                    <li class="list-group-item"><a href="contact.html" class="footer-nav-a">Contact</a></li>
-                    <li class="list-group-item"><a href="#" class="footer-nav-a">Privacy Policy</a></li>
-                    <li class="list-group-item"><a href="guidance.html" class="footer-nav-a">Terms and Conditions</a></li>
+                <ul class="">
+                    <li class="list-group-item"><a href="index.php" class="footer-nav-a">Home</a></li>
+                    <li class="list-group-item"><a href="information.php" class="footer-nav-a">Information</a></li>
+                    <li class="list-group-item"><a href="parenthelp.php" class="footer-nav-a">Parent's Help</a></li>
+                    <li class="list-group-item"><a href="contact.php" class="footer-nav-a">Contact</a></li>
+                    <li class="list-group-item"><a href="about.php" class="footer-nav-a">About</a></li>
+                    <li class="list-group-item"><a href="guidance.php" class="footer-nav-a">Terms and Conditions</a></li>
                 </ul>
             </div>
         </div>

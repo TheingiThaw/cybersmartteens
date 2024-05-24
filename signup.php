@@ -21,16 +21,16 @@
                     <img src="photos/casual-life-3d-young-people-in-the-worker-jumpsuits-with-gadgets.png" alt="">
                 </div>
                 <div class="col-md-6">
-                    <h4 class="mt-3">Welcome to <span class="website-name">CyberSmartTeens</span></h4>
+                    <h4 class="mt-3 red">Welcome to <span class="website-name">CyberSmartTeens</span></h4>
                     <p class="mt-2">Create an account to get more access.</p>
-                    <form action="signup.php" method="post">
+                    <form action="check_duplication.php" method="POST">
                         <div class="mb-3">
-                            <label for="signupName" class="form-label"></label>
+                            <label for="signupFName" class="form-label"></label>
                             <input type="text" class="form-control" id="signupFName" name="firstname" placeholder="Your First Name">
                             <p class="userFname-feedback"></p>
                         </div>
                         <div class="mb-3">
-                            <label for="signupName" class="form-label"></label>
+                            <label for="signupLName" class="form-label"></label>
                             <input type="text" class="form-control" id="signupLName" name="surname" placeholder="Your Sur Name">
                             <p class="userLname-feedback"></p>
                         </div>
@@ -59,102 +59,111 @@
                         </div>
 
                         <div class="col-6">
-                            <button type="submit" class="btn signup-btn mt-3">Sign in</button>
+                            <button type="submit" id="signupBtn" class="btn signup-btn mt-3">Sign in</button>
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <a href="index.php" class="btn nav-a red">Back to home page</a>
                         </div>
                         <script>
                             $(document).ready(function(){
-                                $('form').submit(function(event){
+                                $('#signupBtn').click(function(event){
+
                                     var firstname = $('#signupFName').val();
                                     var surname = $('#signupLName').val();
                                     var email = $('#signupEmail').val();
                                     var firstpw = $('#signupPassword').val();
                                     var pwconfirm = $('#passwordConfirmation').val();
 
-                                    <?php
-                                        $sql1 = "SELECT * FROM user";
-                                        $result1 = mysqli_query($conn, $sql1);
-                                        $row = mysqli_fetch_row($result1);
-                                    ?>
                                     if (firstname === '') {
                                         $('.userFname-feedback').html("First Name should be included").css("color", "red");
-                                        event.preventDefault();
                                     }
                                     else {
                                         $('.userFname-feedback').hide();
                                     }
-                                    for (i = 0; i<$row.length; i++){
-                                        if (firstname === $row[i]['firstname']){
-                                            $('.userFname-feedback').html("First Name already exists").css("color", "red");
-                                        }
-                                    }
                                     if (surname === '') {
                                         $('.userLname-feedback').html("Last Name should be included").css("color", "red");
-                                        event.preventDefault();
                                     }
                                     else{
                                         $('.userLname-feedback').hide();
                                     }
-                                    for (i = 0; i<$row.length; i++){
-                                        if (surname === $row[i]['surname']){
-                                            $('.userLname-feedback').html("Sur Name already exists").css("color", "red");
-                                        }
-                                    }
                                     if (email === '') {
                                         $('.email-feedback').html("Email should be added").css("color", "red");
-                                        event.preventDefault();
                                     }
                                     else{
                                         $('.email-feedback').hide();
                                     }
-                                    for (i = 0; i<$row.length; i++){
-                                        if (email === $row[i][email]){
-                                            $('.email-feedback').html("email already exists").css("color", "red");
-                                        }
-                                    }
                                     if(firstpw === '' || pwconfirm === '') {
                                         $('.password-feedback').html("Password should be included").css("color", "red");
-                                        event.preventDefault();
                                     }
                                     else if (firstpw !== pwconfirm) {
                                         $('.password-feedback').html("Password is not the same").css("color", "red");
-                                        event.preventDefault();
                                     }
                                     else{
                                         $('.password-feedback').hide();
                                     }
+                                    if (firstname !== '' && surname !== '' && email !== '' && firstpw !== '' && pwconfirm !== '' && firstpw === pwconfirm) {
+                                        console.log("Submitting AJAX request");
+                                        $.ajax({
+                                            method: 'POST',
+                                            url: "check_duplication.php",
+                                            data: {
+                                                firstname: firstname,
+                                                surname: surname,
+                                                email: email,
+                                                password: firstpw
+                                            },
+                                            success: function(response) {
+                                                var data = JSON.parse(response);
 
-                                    if(firstname !== '' && surname !== '' && email !== '' && firstpw !== '' && pwconfirm !== '' && firstpw === pwconfirm) {
-                                        <?php
-                                            error_reporting(E_ALL);
-                                            ini_set('display_errors', 1);
-                                        
+                                                if (data.wholename_exists) {
+                                                    $('.userFname-feedback').html("Change either first name or surname. Full name already exists").css("color", "red");
+                                                    $('.userLname-feedback').html("Change either first name or surname. Full name already exists").css("color", "red");
+                                                    alert("whole name exists");
+                                                } else if (data.email_exists) {
+                                                    $('.email-feedback').html("Email already exists").css("color", "red");
+                                                    alert("email exists");
+                                                } 
+                                                else if (data.password_exists) {
+                                                    $('.password-feedback').html("Password already exists").css("color", "red");
+                                                    alert("password exists");
+                                                } 
+                                                else {
+                                                    console.log("Form submitted");
+                                                    $.ajax({
+                                                        url: 'insert.php',
+                                                        method: 'POST',
+                                                        data: {
+                                                            firstname: firstname,
+                                                            surname: surname,
+                                                            email: email,
+                                                            password: firstpw
+                                                        },
+                                                        success: function(response) {
+                                                            console.log(response);
+                                                            var data = JSON.parse(response);
 
-                                            if (isset($_REQUEST["firstname"]) && isset($_REQUEST["surname"]) && 
-                                            isset($_REQUEST["email"]) && isset($_REQUEST["password"])){
-                                                $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
-                                                $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_SPECIAL_CHARS);
-                                                $email    = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-                                                $userpassword = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
-
-                                                $hash = password_hash($userpassword, PASSWORD_DEFAULT);
-
-                                                $sql = "Insert into user(firstname, surname, email, userpassword)
-                                                        VALUES ('$firstname', '$surname', '$email', '$hash')";
-
-                                                $result = $conn->query($sql);
-
-                                                header("Location: signin.php");
-                                                exit();
-                                                
-                                                if($result===FALSE){
-                                                    echo "Error: " . $sql ."<br>" . $conn->error;
+                                                            if (data.newrecord_input) {
+                                                                window.location.href = 'signin.php';
+                                                            } else {
+                                                                alert("Error encountered");
+                                                            }
+                                                        },
+                                                        error: function(jqXHR, textStatus, errorThrown) {
+                                                            console.error("Error encountered in insert.php:", textStatus, errorThrown);
+                                                            alert("Error encountered in insert.php");
+                                                        }
+                                                    });
                                                 }
-                                                $conn->close();
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                console.error("AJAX request failed for check_duplication.php:", textStatus, errorThrown);
+                                                alert("AJAX request failed for check_duplication.php");
                                             }
-                                        ?>
-                                    }
-                                    else{
+                                        });
                                         event.preventDefault();
+                                    } else {
+                                        event.preventDefault(); // Prevent form submission when conditions are not met
                                     }
                                 });
                             });

@@ -81,6 +81,51 @@
     .mb-textcenter{
         text-align: center;
     }
+    .header{
+        width: 770px;
+        height: 450px;
+    }
+    .header-nav-div{
+        width: 50%;
+        margin: auto;
+    }
+    .header-nav-div>.nav-tabs{
+        width: 100%;
+        display: block;
+    }
+    footer{
+        width: 770px;
+        height: 700px;
+    }
+    .footer{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        height: 500px;
+    }
+    .footer>div>ul{
+        display: block;
+        width: 100%;
+        margin-top: 5em;
+        display: flex;
+    }
+    .footer2{
+        width: 100%;
+    }
+    .footer-sm-a{
+        margin-left: 60px;
+        font-size: 1.8em;
+        padding: 10px;
+        border-radius: 100px;
+        color: black;
+    }
+    .footer-nav-a{
+        display: block;
+        font-size: 0.8em;
+        padding: 0;
+        margin-left: 15px;
+    }
     .index-section{
         width: 700px;
         height: 850px; 
@@ -134,6 +179,12 @@
         width: 760px;
         margin: auto;
     }
+    .index-s3-header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8em;
+    }
     .index-s3-img{
         width: 800px;
         margin-left: 10px;
@@ -146,7 +197,6 @@
     .index-s5-div{
         width: 780px;
         margin: 0;
-        
     }
     .bi-info-circle-fill,.bi-intersect,.bi-newspaper{
         font-size: 5em;
@@ -162,7 +212,6 @@
         width: 500px;
         padding-top: 0px;
     }
-
     .index-p-s{
         width: 85%;
         height: 1200px;
@@ -181,6 +230,10 @@
         margin: auto;
         display: block;
         box-sizing: border-box;
+    }
+    .pricingPlan>h2{
+        margin-top: 30px;
+        font-size: 3em;
     }
     .mb-input{
         width: 300px;
@@ -235,7 +288,6 @@
         margin: auto;
         margin-top: 1em;
     }
-
     /* about us */
     .intro{
         width: 767px;
@@ -366,7 +418,6 @@
     footer,.footer{
         width: 770px;
     }
-
     /* contact css */
     .contact{
         width: 770px;
@@ -450,7 +501,6 @@
         width: 600px;
         height: 300px;
     }
-
     /* guidance css */
     .guidance-header{
         width: 780px;
@@ -539,9 +589,7 @@
         color: white;
         border-radius: 15px;
     }
-
     /* information css */
-
     .info-header{
         width: 700px;
         margin: auto;
@@ -651,7 +699,6 @@
         width: 650px;
         left: 75px;
     }
-
     /* livestream css */
     .livestream-s1{
         width: 700px;
@@ -792,10 +839,6 @@
         width: 300px;
         height: 300px;
     }
-    .ph-news-section{
-        width: 770px;
-        height: 1000px;
-    }
     .ph-subscription{
         width: 770px;
         height: 700px;
@@ -874,7 +917,6 @@
     .mobile-block>input{
         width: 400px;
     }
-
     /* productdetails css */
     .productdetails-main{
         width: 770px;
